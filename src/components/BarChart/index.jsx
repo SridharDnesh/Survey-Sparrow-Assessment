@@ -1,7 +1,8 @@
+import { useEffect, useRef, useState } from "react";
 import Bar from "../Bar";
 import PropTypes from "prop-types";
+import { calculatePercentage, isSorted } from "@/utils/helpers";
 import styles from "./style.module.css";
-import { useEffect, useRef, useState } from "react";
 
 function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
   if (!Array.isArray(xRange)) {
@@ -10,6 +11,14 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
 
   if (!Array.isArray(yRange)) {
     throw new Error("yRange should be of type Array.");
+  }
+
+  if (!isSorted(xRange)) {
+    throw new Error("xRange should be in a non-decreasing order.");
+  }
+
+  if (!isSorted(yRange)) {
+    throw new Error("yRange should be in a non-decreasing order.");
   }
 
   if (!Array.isArray(dataPoints)) {
@@ -31,12 +40,8 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
   const graphRef = useRef(null);
   const [graphHeight, setGraphHeight] = useState(0);
 
+  const yMax = yRange.slice(-1)[0];
   const yMaxTick = yRange.length;
-  const maxY = yRange.slice(-1)[0];
-
-  const calculatePercentage = (partialValue, totalValue) => {
-    return (partialValue / totalValue) * 100;
-  };
 
   useEffect(() => {
     if (graphRef.current) {
@@ -47,18 +52,20 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.graph} ref={graphRef}>
+        {/* Bar UI looping */}
         {xRange.map((x, index) => (
           <Bar
             key={x}
             label={x}
-            heightPercentage={calculatePercentage(dataPoints[index], maxY)}
+            heightPercentage={calculatePercentage(dataPoints[index], yMax)}
             yMaxTick={yMaxTick}
           />
         ))}
 
+        {/* Y-Axis Label & ticks */}
         {graphRef.current && (
           <div className={styles.yAxisLabelContainer}>
-            <p>{yLabel}</p>
+            {yLabel && <p>{yLabel}</p>}
             <div className={styles.yAxis}>
               {graphRef.current &&
                 yRange.map((y) => (
@@ -75,7 +82,8 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
           </div>
         )}
 
-        {graphRef.current && (
+        {/* X-Axis Label */}
+        {graphRef.current && xLabel && (
           <div className={styles.xAxisLabelContainer}>
             <p>{xLabel}</p>
           </div>

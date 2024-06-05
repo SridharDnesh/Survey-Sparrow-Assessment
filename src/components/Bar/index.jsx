@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import styles from "./style.module.css";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import styles from "./style.module.css";
 
 function Bar({ label, heightPercentage, yMaxTick }) {
   const [actualHeight, setActualHeight] = useState(0);
+
   useEffect(() => {
     setActualHeight(yMaxTick * 100 * (heightPercentage / 100));
   }, [heightPercentage, yMaxTick]);
@@ -12,6 +12,10 @@ function Bar({ label, heightPercentage, yMaxTick }) {
   const barStyle = {
     height: actualHeight || 0,
     top: yMaxTick * 100 - (actualHeight || 0),
+    ...(heightPercentage === 0 && {
+      borderTopLeftRadius: 0,
+      borderTopRightRadius: 0,
+    }),
   };
 
   return (
@@ -24,7 +28,7 @@ function Bar({ label, heightPercentage, yMaxTick }) {
 export default Bar;
 
 Bar.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   heightPercentage: PropTypes.number,
   yMaxTick: PropTypes.number,
 };
