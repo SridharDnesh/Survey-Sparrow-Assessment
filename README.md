@@ -1,8 +1,8 @@
 # Survey Sparrow Assessment
 
-<div style="text-align: center;">
-    <img src="./public/screenshot.png" alt="Screenshot of bar chart" width="400"/>
-</div>
+<p align="center">
+ <img src="./public/screenshot.png" alt="Screenshot of bar chart"/>
+</p>
 
 This project demonstrates building a bar chart from scratch using React and plain CSS.
 
