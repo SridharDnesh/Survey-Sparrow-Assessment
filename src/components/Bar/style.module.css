@@ -1,0 +1,18 @@
+.root {
+  position: relative;
+  /* height: 100px; */
+  width: 40px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: orange;
+  transition: all 1s;
+  
+}
+
+.label {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
