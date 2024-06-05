@@ -1,16 +1,16 @@
 import { useState } from "react";
 import BarChart from "@components/BarChart";
-import { generateRandomList } from "@utils/heplers";
+import { generateRandomList } from "@utils/helpers";
 import { RATINGS, RATINGS_COUNT_TICKS } from "@utils/constants";
 import "./App.css";
 
-const ratings = [1, 2, 3, 4, 5];
-
 function App() {
-  const [dataPoints, setDataPoints] = useState([10, 22, 12, 43, 9]);
+  const [dataPoints, setDataPoints] = useState(
+    generateRandomList(RATINGS.length)
+  );
 
   const handleRegenerate = () => {
-    setDataPoints(generateRandomList(ratings.length));
+    setDataPoints(generateRandomList(RATINGS.length));
   };
 
   return (
