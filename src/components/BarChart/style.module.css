@@ -1,6 +1,6 @@
 .wrapper {
-  border-left: 2px solid black;
-  border-bottom: 2px solid black;
+  border-left: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
   padding-top: 50px;
   margin: 80px;
 }
@@ -11,8 +11,6 @@
   grid-template-columns: repeat(5, minmax(20px, 40px));
   grid-template-rows: repeat(5, minmax(60px, 100px));
   column-gap: 40px;
-  /* border-left: 2px solid black; */
-  /* border-bottom: 2px solid black; */
   padding-left: 40px;
   padding-right: 40px;
 }
@@ -34,8 +32,6 @@
 .yAxis {
   display: flex;
   flex-direction: column-reverse;
-  /* position: absolute;
-  left: -40px; */
 }
 
 .xAxisLabelContainer {
