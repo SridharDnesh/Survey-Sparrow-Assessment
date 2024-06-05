@@ -1,0 +1,45 @@
+.wrapper {
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  padding-top: 50px;
+  margin: 80px;
+}
+
+.graph {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(20px, 40px));
+  grid-template-rows: repeat(5, minmax(60px, 100px));
+  column-gap: 40px;
+  /* border-left: 2px solid black; */
+  /* border-bottom: 2px solid black; */
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.yAxisLabelContainer {
+  display: flex;
+  position: absolute;
+  left: -70px;
+  gap: 20px;
+}
+
+.yAxisLabelContainer > p {
+  display: inline;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.yAxis {
+  display: flex;
+  flex-direction: column-reverse;
+  /* position: absolute;
+  left: -40px; */
+}
+
+.xAxisLabelContainer {
+  position: absolute;
+  bottom: -60px;
+  width: 100%;
+}
