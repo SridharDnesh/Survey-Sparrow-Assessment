@@ -1,7 +1,7 @@
 import { useState } from "react";
-import BarChart from "./components/BarChart";
-import { generateRandomList } from "./utils/heplers";
-import { RATINGS, RATINGS_COUNT_TICKS } from "./utils/constants";
+import BarChart from "@components/BarChart";
+import { generateRandomList } from "@utils/heplers";
+import { RATINGS, RATINGS_COUNT_TICKS } from "@utils/constants";
 import "./App.css";
 
 const ratings = [1, 2, 3, 4, 5];
