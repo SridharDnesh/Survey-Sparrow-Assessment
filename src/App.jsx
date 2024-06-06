@@ -6,7 +6,7 @@ import styles from "./App.module.css";
 
 function App() {
   const [dataPoints, setDataPoints] = useState(
-    generateRandomList(RATINGS.length)
+    generateRandomList(RATINGS.length, RATINGS_COUNT_TICKS.slice(-1)[0])
   );
 
   const handleReset = () => {
