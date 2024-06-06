@@ -40,7 +40,10 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
   const graphRef = useRef(null);
   const [graphHeight, setGraphHeight] = useState(0);
 
+  // Getting the max value of y-axis
   const yMax = yRange.slice(-1)[0];
+
+  // Gettings the total length of the y-axis
   const yMaxTick = yRange.length;
 
   useEffect(() => {
@@ -67,17 +70,16 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
           <div className={styles.yAxisLabelContainer}>
             {yLabel && <p>{yLabel}</p>}
             <div className={styles.yAxis}>
-              {graphRef.current &&
-                yRange.map((y) => (
-                  <div
-                    key={y}
-                    style={{
-                      height: graphHeight / yRange.length,
-                    }}
-                  >
-                    <p style={{ transform: "translateY(-25%)" }}>{y}</p>
-                  </div>
-                ))}
+              {yRange.map((y) => (
+                <div
+                  key={y}
+                  style={{
+                    height: graphHeight / yRange.length,
+                  }}
+                >
+                  <p style={{ transform: "translateY(-25%)" }}>{y}</p>
+                </div>
+              ))}
             </div>
           </div>
         )}
