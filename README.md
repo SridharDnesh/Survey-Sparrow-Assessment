@@ -29,6 +29,10 @@ npm run dev
 - CSS Modules
 - Vite
 
+### Packages used
+- clsx
+- prop-types
+
 
 ### Folder Structure
 
