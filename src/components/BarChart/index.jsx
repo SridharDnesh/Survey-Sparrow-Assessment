@@ -101,7 +101,7 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
                     height: graphHeight / yRange.length,
                   }}
                 >
-                  <p title={y}>{y}</p>
+                  <p title={`${y}`}>{y}</p>
                 </div>
               ))}
             </div>

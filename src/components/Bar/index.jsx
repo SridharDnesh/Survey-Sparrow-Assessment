@@ -19,8 +19,8 @@ function Bar({ label, value, heightPercentage, yMaxTick }) {
   };
 
   return (
-    <div className={styles.root} style={barStyle} title={value}>
-      <div className={styles.label} title={label}>{label}</div>
+    <div className={styles.root} style={barStyle} title={`${value}`}>
+      <div className={styles.label} title={`${label}`}>{label}</div>
     </div>
   );
 }
