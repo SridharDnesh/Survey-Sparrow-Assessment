@@ -4,7 +4,12 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   background-color: var(--primary);
-  transition: all 1s;
+  transition: all 1s, background-color 0.2s, border-radius 1s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.root:hover {
+  background-color: var(--secondary);
+  cursor: pointer;
 }
 
 .label {

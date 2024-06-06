@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./style.module.css";
 
-function Bar({ label, heightPercentage, yMaxTick }) {
+function Bar({ label, value, heightPercentage, yMaxTick }) {
   const [actualHeight, setActualHeight] = useState(0);
 
   useEffect(() => {
@@ -19,8 +19,8 @@ function Bar({ label, heightPercentage, yMaxTick }) {
   };
 
   return (
-    <div className={styles.root} style={barStyle}>
-      <div className={styles.label}>{label}</div>
+    <div className={styles.root} style={barStyle} title={value}>
+      <div className={styles.label} title={label}>{label}</div>
     </div>
   );
 }
@@ -29,6 +29,7 @@ export default Bar;
 
 Bar.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.number,
   heightPercentage: PropTypes.number,
   yMaxTick: PropTypes.number,
 };

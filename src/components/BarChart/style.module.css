@@ -22,20 +22,29 @@
   gap: 20px;
 }
 
-.yAxisLabelContainer > p {
-  display: inline;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-}
-
 .yAxis {
   display: flex;
   flex-direction: column-reverse;
+}
+
+.yAxis > div > p {
+  cursor: pointer;
+  transform: translateY(-25%);
 }
 
 .xAxisLabelContainer {
   position: absolute;
   bottom: -60px;
   width: 100%;
+}
+
+.label {
+  display: inline;
+  user-select: none;
+}
+
+.verticalLabel {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
 }

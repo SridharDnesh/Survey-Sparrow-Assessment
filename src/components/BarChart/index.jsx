@@ -3,6 +3,24 @@ import Bar from "../Bar";
 import PropTypes from "prop-types";
 import { calculatePercentage, isSorted } from "@/utils/helpers";
 import styles from "./style.module.css";
+import clsx from "clsx";
+
+const AxisLabel = ({ label, orientation }) => {
+  if (!label) return "";
+
+  const isVertical = orientation === "vertical";
+
+  return (
+    <p className={clsx(styles.label, { [styles.verticalLabel]: isVertical })}>
+      {label}
+    </p>
+  );
+};
+
+AxisLabel.propTypes = {
+  label: PropTypes.string,
+  orientation: PropTypes.oneOf(["vertical", "horizontal"]),
+};
 
 function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
   if (!Array.isArray(xRange)) {
@@ -60,6 +78,7 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
           <Bar
             key={x}
             label={x}
+            value={dataPoints[index]}
             heightPercentage={calculatePercentage(dataPoints[index], yMax)}
             yMaxTick={yMaxTick}
           />
@@ -68,7 +87,7 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
         {/* Y-Axis Label & ticks */}
         {graphRef.current && (
           <div className={styles.yAxisLabelContainer}>
-            {yLabel && <p>{yLabel}</p>}
+            <AxisLabel label={yLabel} orientation={"vertical"} />
             <div className={styles.yAxis}>
               {yRange.map((y) => (
                 <div
@@ -77,7 +96,7 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
                     height: graphHeight / yRange.length,
                   }}
                 >
-                  <p style={{ transform: "translateY(-25%)" }}>{y}</p>
+                  <p title={y}>{y}</p>
                 </div>
               ))}
             </div>
@@ -87,15 +106,13 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
         {/* X-Axis Label */}
         {graphRef.current && xLabel && (
           <div className={styles.xAxisLabelContainer}>
-            <p>{xLabel}</p>
+            <AxisLabel label={xLabel} />
           </div>
         )}
       </div>
     </div>
   );
 }
-
-export default BarChart;
 
 BarChart.propTypes = {
   data: PropTypes.shape({
@@ -106,3 +123,5 @@ BarChart.propTypes = {
     dataPoints: PropTypes.arrayOf(PropTypes.number),
   }),
 };
+
+export default BarChart;
