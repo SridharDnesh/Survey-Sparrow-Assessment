@@ -9,7 +9,8 @@
 }
 
 :root {
-  --primary: rgb(44, 119, 127);
+  --primary: rgb(86, 175, 188);
+  --secondary: rgb(44, 119, 127);
   --accent: rgb(54, 58, 67);
   
   font-family: "Poppins", sans-serif;
