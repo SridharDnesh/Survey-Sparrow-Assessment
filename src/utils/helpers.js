@@ -2,10 +2,11 @@
  * Generates a list of random numbers.
  *
  * @param {number} size - The size of the list to generate.
+ * @param {number} maxValue - The maxValue of the list to generate.
  * @returns {number[]} A list of random numbers between 1 and size * 10.
  * @throws {Error} Will throw an error if the size parameter is not provided.
  */
-export const generateRandomList = (size) => {
+export const generateRandomList = (size, maxValue) => {
   if (!size) {
     throw new Error(
       "parameter size should be passed to generate a random list"
@@ -14,7 +15,7 @@ export const generateRandomList = (size) => {
 
   return new Array(size)
     .fill(0)
-    .map(() => Math.floor(Math.random() * (size * 10)) + 1);
+    .map(() => Math.floor(Math.random() * maxValue) + 1);
 };
 
 /**

@@ -64,6 +64,11 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
   // Gettings the total length of the y-axis
   const yMaxTick = yRange.length;
 
+  const graphGridStyle = {
+    gridTemplateColumns: `repeat(${xRange.length}, minmax(20px, 40px))`,
+    gridTemplateRows: `repeat(${yRange.length}, minmax(60px, 100px))`,
+  };
+
   useEffect(() => {
     if (graphRef.current) {
       setGraphHeight(graphRef.current.clientHeight);
@@ -72,7 +77,7 @@ function BarChart({ data: { xLabel, yLabel, xRange, yRange, dataPoints } }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.graph} ref={graphRef}>
+      <div className={styles.graph} ref={graphRef} style={graphGridStyle}>
         {/* Bar UI looping */}
         {xRange.map((x, index) => (
           <Bar

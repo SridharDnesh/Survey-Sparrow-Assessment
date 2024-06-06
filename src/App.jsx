@@ -14,11 +14,13 @@ function App() {
   };
 
   const handleRegenerate = () => {
-    setDataPoints(generateRandomList(RATINGS.length));
+    setDataPoints(
+      generateRandomList(RATINGS.length, RATINGS_COUNT_TICKS.slice(-1)[0])
+    );
   };
 
   const handleRegenerateByTens = () => {
-    setDataPoints(shuffleArray([10, 20, 30, 40, 50]));
+    setDataPoints(shuffleArray([...RATINGS_COUNT_TICKS]));
   };
 
   return (
